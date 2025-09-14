@@ -1,19 +1,18 @@
-type Director = {
+export type Director = {
     name: string;
     salary: number;
     role: "director";
 };
 
-type Teacher = {
+export type Teacher = {
     name: string;
     salary: number;
     role: "teacher";
 };
 
-type Employee = Director | Teacher;
+export type Employee = Director | Teacher;
 
-
-function createEmployee(salary: number): Employee {
+export function createEmployee(salary: number): Employee {
     if (salary > 500) {
         return { name: "Emmanuel", salary, role: "director" };
     } else {
@@ -21,29 +20,24 @@ function createEmployee(salary: number): Employee {
     }
 }
 
-
-function isDirector(employee: Employee): employee is Director {
+// Exported type predicate
+export function isDirector(employee: Employee): employee is Director {
     return employee.role === "director";
 }
 
-
-function workDirectorTasks(): void {
+export function workDirectorTasks(): void {
     console.log("Getting to director tasks");
 }
 
-function workTeacherTasks(): void {
+export function workTeacherTasks(): void {
     console.log("Getting to work");
 }
 
-
-function executeWork(employee: Employee): void {
+// Exported function
+export function executeWork(employee: Employee): void {
     if (isDirector(employee)) {
         workDirectorTasks();
     } else {
         workTeacherTasks();
     }
 }
-
-
-executeWork(createEmployee(200));  
-executeWork(createEmployee(1000)); 
