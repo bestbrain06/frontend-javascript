@@ -1,8 +1,11 @@
+/// <reference path="./Teacher.ts" />
+
 namespace Subjects {
   export class Subject {
-    teacher!: Teacher; // teacher is initially undefined, using definite assignment
+    teacher!: Teacher; // Definite assignment
 
-    setTeacher(teacher: Teacher) {
+    // Correct setter method
+    setTeacher(teacher: Teacher): void {
       this.teacher = teacher;
     }
   }
