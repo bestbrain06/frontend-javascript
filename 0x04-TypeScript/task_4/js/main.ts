@@ -1,50 +1,40 @@
-export type Director = {
-    name: string;
-    salary: number;
-    role: "director";
-    workDirectorTasks: () => string;
+// js/main.ts
+/// <reference path="./subjects/Cpp.ts" />
+/// <reference path="./subjects/Java.ts" />
+/// <reference path="./subjects/React.ts" />
+
+import Teacher = Subjects.Teacher;
+import Cpp = Subjects.Cpp;
+import Java = Subjects.Java;
+import React = Subjects.React;
+import Subject = Subjects.Subject;
+
+// Export constants
+export const cpp = new Cpp();
+export const java = new Java();
+export const react = new React();
+
+// Create teacher object
+export const cTeacher: Teacher = {
+  firstName: "John",
+  lastName: "Doe",
+  experienceTeachingC: 10,
 };
 
-export type Teacher = {
-    name: string;
-    salary: number;
-    role: "teacher";
-    workTeacherTasks: () => string;
-};
+// C++ Subject
+console.log("C++");
+cpp.setTeacher(cTeacher);
+console.log(cpp.getRequirements());
+console.log(cpp.getAvailableTeacher());
 
-export type Employee = Director | Teacher;
+// Java Subject
+console.log("Java");
+java.setTeacher(cTeacher);
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
 
-export function createEmployee(salary: number): Employee {
-    if (salary > 500) {
-        return {
-            name: "Emmanuel",
-            salary,
-            role: "director",
-            workDirectorTasks: () => "Getting to director tasks",
-        };
-    } else {
-        return {
-            name: "Ama",
-            salary,
-            role: "teacher",
-            workTeacherTasks: () => "Getting to work",
-        };
-    }
-}
-
-export function isDirector(employee: Employee): employee is Director {
-    return employee.role === "director";
-}
-
-
-export function executeWork(employee: Employee): string {
-    if (isDirector(employee)) {
-        return employee.workDirectorTasks();
-    } else {
-        return employee.workTeacherTasks();
-    }
-}
-
-
-console.log(executeWork(createEmployee(200)));  
-console.log(executeWork(createEmployee(1000)));  
+// React Subject
+console.log("React");
+react.setTeacher(cTeacher);
+console.log(react.getRequirements());
+console.log(react.getAvailableTeacher());
